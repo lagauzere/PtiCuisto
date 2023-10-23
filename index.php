@@ -6,6 +6,9 @@
     <title>PtiCuisto</title>
 </head>
 <body>
+    <?php
+        require_once 'connexion.php';    
+    ?>
     
 </body>
 </html>
