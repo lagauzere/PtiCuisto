@@ -182,20 +182,20 @@ require_once 'connexion.php';
         
         <div class="blocUn">
             <?php
-                $data = $posts->fetch();
-                echo $data[4];
+                $data1 = $posts->fetch();
+                echo $data1[4];
             ?>
          </div>
         <div class="blocDeux">
             <?php
-                $data = $posts->fetch();
-                echo $data[4];
+                $data2 = $posts->fetch();
+                echo $data2[4];
             ?>
         </div>
         <div class="blocTrois">
             <?php
-                $data = $posts->fetch();
-                echo $data[4];
+                $data3 = $posts->fetch();
+                echo $data3[4];
             ?>
         </div>
     </div> 
@@ -204,9 +204,21 @@ require_once 'connexion.php';
         <!-- Contenu de la div "editoMobile" pour les écrans mobiles -->
         <h2>Les dernières recettes !</h2>
 
-        <div class="blocUn">Lorem Ipsum</div>
-        <div class="blocDeux">Lorem Ipsum</div>
-        <div class="blocTrois">Lorem Ipsum</div>
+        <div class="blocUn">
+            <?php
+                 echo $data1[4];
+            ?>
+        </div>
+        <div class="blocDeux">
+            <?php
+                 echo $data2[4];
+            ?>
+        </div>
+        <div class="blocTrois">
+            <?php
+                 echo $data3[4];
+            ?>
+        </div>
     </div>
     
     <!-- Footer -->
