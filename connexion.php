@@ -28,7 +28,7 @@ $dbPass = getenv('DB_PASS');
 
 // Connexion à la base de données en utilisant PDO
 try {
-    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    $bdd = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     // Le reste de votre code pour interagir avec la base de données...
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
