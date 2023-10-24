@@ -179,10 +179,25 @@ require_once 'connexion.php';
     <div class="derRecette hidden sm:block">
         <!-- Contenu de la div "edito" pour les écrans non mobiles -->
         <h2>Les dernières recettes !</h2>
-
-        <div class="blocUn">Lorem Ipsum</div>
-        <div class="blocDeux">Lorem Ipsum</div>
-        <div class="blocTrois">Lorem Ipsum</div>
+        
+        <div class="blocUn">
+            <?php
+                $data = $posts->fetch();
+                echo $data[4];
+            ?>
+         </div>
+        <div class="blocDeux">
+            <?php
+                $data = $posts->fetch();
+                echo $data[4];
+            ?>
+        </div>
+        <div class="blocTrois">
+            <?php
+                $data = $posts->fetch();
+                echo $data[4];
+            ?>
+        </div>
     </div> 
 
     <div class="derRecetteMobile block sm:hidden">
