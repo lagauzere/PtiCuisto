@@ -32,7 +32,10 @@
             }
 
         else if (isset($_POST['ingredient'])){
-            $sqlQuery = 'SELECT * FROM RECETTE Where REC_CONTENU like "%'.$_POST['ingredient'].'%" or REC_TITRE like "%'.$_POST['ingredient'].'%"';
+            $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,CAT_INTITULE,REC_RESUME 
+            FROM RECETTE,INGREDIENT,CATEGORIE WHERE lower(ING_INTITULE) 
+            like "%'.$_POST['ingredient'].'%" and REC_CONTENU like "%'.$_POST['ingredient'].'%" and RECETTE.CAT_ID= CATEGORIE.CAT_ID;';
+            //"%'.$_POST['ingredient'].'%" or REC_TITRE like "%'.$_POST['ingredient'].'%"';
             }
 
         $recipesStatement = $pdo->prepare($sqlQuery);
@@ -43,8 +46,9 @@
 // On affiche chaque recette une à une
     foreach ($recipes as $recipe) {
     ?>
-    <p><?php echo $recipe['REC_ID']."\n".
-            $recipe['REC_TITRE']."<br>".
+    <p><?php echo $recipe['REC_TITRE']."\n".
+            $recipe['REC_IMAGE']."<br>".
+            $recipe['CAT_INTITULE']."<br>".
             $recipe['REC_RESUME'];
      ?></p>
     <?php
