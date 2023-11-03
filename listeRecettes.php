@@ -60,7 +60,7 @@
             <p>
                 <?php echo '<div class="image">' . $recipe['REC_IMAGE'] . '</div>' . "\n" .
                     '<div class="titre">' . $recipe['REC_TITRE'] . '</div>' . "<br>" .
-                    //'<div class="categorie">' . $recipe['REC_CATEGORIE'] . '</div>' . "<br>" .
+                    '<div class="categorie">' . $recipe['CAT_INTITULE'] . '</div>' . "<br>" .
                     '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "<br>";
                 // $recipe['REC_TAG']
                 ?>
