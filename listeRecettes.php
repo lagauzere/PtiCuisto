@@ -58,7 +58,7 @@
         ?>
         <div class="recette">
             <p>
-                <?php echo '<div class="image">' . $recipe['REC_IMAGE'] . '</div>' . "\n" .
+                <?php echo '<img src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
                     '<div class="titre">' . $recipe['REC_TITRE'] . '</div>' . "<br>" .
                     '<div class="categorie">' . $recipe['CAT_INTITULE'] . '</div>' . "<br>" .
                     '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "<br>";
