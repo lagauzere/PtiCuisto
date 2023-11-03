@@ -18,17 +18,17 @@
 
 
         if(isset($_POST['entree'])){
-        $sqlQuery = 'SELECT * FROM RECETTE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "entree" )';
+        $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "entree" )';
         }
         else if (isset($_POST['plat'])){
-            $sqlQuery = 'SELECT * FROM RECETTE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "plat" )';
+            $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "plat" )';
             }
         else if (isset($_POST['dessert'])){
-            $sqlQuery = 'SELECT * FROM RECETTE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "dessert" )';
+            $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "dessert" )';
             }
 
         else if (isset($_POST['titre'])){
-            $sqlQuery = 'SELECT * FROM RECETTE Where REC_TITRE like "%'.$_POST['titre'].'%"';
+            $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where REC_TITRE like "%'.$_POST['titre'].'%"';
             }
 
         else if (isset($_POST['ingredient'])){
