@@ -26,15 +26,18 @@
     <p class="header">Voici les recettes correspondant à vos critères :</p>
     <?php
 
-
         if(isset($_POST['entree'])){
-        $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "entree" )';
+        $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE
+         FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "entree" ) and CAT_INTITULE = "entree"';
         }
         else if (isset($_POST['plat'])){
-            $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "plat" )';
+            $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE
+             FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "plat" ) and CAT_INTITULE = "plat"';
             }
         else if (isset($_POST['dessert'])){
-            $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "dessert" )';
+            $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE 
+            FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "dessert" )
+             and RECETTE.CAT_ID= CATEGORIE.CAT_ID  ; ';
             }
 
         else if (isset($_POST['titre'])){
