@@ -23,7 +23,7 @@
         <?php require_once 'connexion.php'; ?>
     </header>
 
-    <p class="header">Voici les recettes correspondant à vos critères :</p>
+    <p class="header">Voici les recettes correspondantes à vos critères :</p>
     <?php
 
         if(isset($_POST['entree'])){
