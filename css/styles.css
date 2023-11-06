@@ -88,3 +88,8 @@
 .mobile-social-icons {
   max-width: 35%;
 }
+.blocRecette{
+  border: solid;
+  COLOR: aquamarine;
+  display: block;
+}

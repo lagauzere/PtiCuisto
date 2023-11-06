@@ -58,7 +58,7 @@ require_once 'connexion.php';
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="index.html" id="hrefcolor"
+                        <a href="index.php" id="hrefcolor"
                             class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                             aria-current="page">Accueil</a>
                         <a href="#" id="hrefcolor"
@@ -180,23 +180,25 @@ require_once 'connexion.php';
         <!-- Contenu de la div "edito" pour les écrans non mobiles -->
         <h2>Les dernières recettes !</h2>
         
-        <div class="blocUn">
+        <div class="blocRecette">
             <?php
                 $data1 = $posts->fetch();
                 echo $data1[4];
             ?>
          </div>
-        <div class="blocDeux">
+        <div class="blocRecette">
             <?php
                 $data2 = $posts->fetch();
                 echo $data2[4];
             ?>
         </div>
-        <div class="blocTrois">
-            <?php
-                $data3 = $posts->fetch();
-                echo $data3[4];
-            ?>
+        <div class="blocRecette">
+            <p>
+                 <?php
+                    $data3 = $posts->fetch();
+                    echo $data3[4];
+                ?>
+            </p>
         </div>
     </div> 
 
@@ -204,20 +206,26 @@ require_once 'connexion.php';
         <!-- Contenu de la div "editoMobile" pour les écrans mobiles -->
         <h2>Les dernières recettes !</h2>
 
-        <div class="blocUn">
-            <?php
-                 echo $data1[4];
-            ?>
+        <div class="blocRecette">
+            <p>
+                <?php
+                    echo $data1[4];
+                ?>
+            </p>
         </div>
-        <div class="blocDeux">
-            <?php
-                 echo $data2[4];
-            ?>
+        <div class="blocRecette">
+            <p>
+                <?php
+                    echo $data2[4];
+                ?>
+            </p>
         </div>
-        <div class="blocTrois">
-            <?php
-                 echo $data3[4];
-            ?>
+        <div class="blocRecette">
+            <p>
+                <?php
+                    echo $data3[4];
+                ?>
+            </p>
         </div>
     </div>
     
