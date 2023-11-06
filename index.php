@@ -18,13 +18,16 @@ require 'controller/Member.php';
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
-
-            if (isset($_GET['action'])) {
         
-                if ($_GET['action'] == 'listPosts') {
-                    $blog = new Blog();
-                    $blog->listPosts();
-                }
+             elseif ($_GET['action'] == 'listPosts') {
+                $blog = new Blog();
+                $blog->listPosts();
+            }
+
+
+            elseif ($_GET['action'] == 'deconnexion') {
+                $member = new Member();
+                $member->deconnexion();
             }
         }
 

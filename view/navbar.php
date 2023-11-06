@@ -49,8 +49,12 @@
                             recettes</a>
                         <a href="filtres.php" id="hrefcolor"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Filtres</a>
-                        <a href="index.php?action=connexion" id="hrefcolor"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Connexion</a>
+                            <?php if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])) {?>
+                                <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=mesRecettes">Mes recettes</a>
+                                         <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=deconnexion">Se deconnecter</a>
+                                <?php } else { ?>                                        
+                                            <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=connexion">Se connecter</a>
+                                <?php }?>
                     </div>
                 </div>
             </div>

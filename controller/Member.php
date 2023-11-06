@@ -38,4 +38,11 @@ class Member
             }
         }
     }
+    public function deconnexion(){
+        $_SESSION = array();
+        session_destroy();
+        header('location: index.php?action=listPosts');
+    }
+
+
 }
