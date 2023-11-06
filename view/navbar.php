@@ -55,6 +55,9 @@
                                 <?php } else { ?>                                        
                                             <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=connexion">Se connecter</a>
                                 <?php }?>
+                                <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {?>
+                                    <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="">Options Admin</a>                                                                         
+                                <?php }?>     
                     </div>
                 </div>
             </div>
