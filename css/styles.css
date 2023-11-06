@@ -88,3 +88,8 @@
 .mobile-social-icons {
   max-width: 35%;
 }
+
+
+.form-group{
+  border: solid black 4px;
+}

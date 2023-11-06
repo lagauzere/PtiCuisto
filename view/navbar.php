@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-    <nav class="navBackground">
+<nav class="navBackground">
         <div class="relative flex h-16 items-center justify-between">
             <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
@@ -84,7 +72,3 @@
             </div>
         </div>
     </nav>
-
-</body>
-
-</html>

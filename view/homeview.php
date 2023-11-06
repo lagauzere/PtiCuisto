@@ -1,9 +1,7 @@
 
-
-
+<?php ob_start(); ?>
 <!--caroussel-->
     <div class="CarouselMargin">
-
         <div id="default-carousel" class="relative" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
