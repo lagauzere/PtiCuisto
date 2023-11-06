@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <!--caroussel-->
 
     <div class="CarouselMargin">
