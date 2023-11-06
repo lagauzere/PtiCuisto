@@ -74,7 +74,7 @@
                 <a href="index.html" id="hrefcolor"
                     class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                     aria-current="page">Accueil</a>
-                <a href="./nosRecettes.php" id="hrefcolor"
+                <a href="nosRecettes.php" id="hrefcolor"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Nos
                     recettes</a>
                 <a href="filtres.php" id="hrefcolor"
