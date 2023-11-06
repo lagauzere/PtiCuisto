@@ -1,14 +1,32 @@
 <?php
-
+session_start();
 require 'controller/Blog.php'; 
 require 'controller/Member.php'; 
     try {
-        
-        if ($_GET['action'] == 'connexion') {
-            $member = new Member();
-            $member->connexion();
-        }
+        if (isset($_GET['action'])) {
+            if ($_GET['action'] == 'connexion') {
+                $member = new Member();
+                $member->connexion();
+            }
 
+            elseif ($_GET['action']== 'connexionUser') {
+                if (isset($_POST['pseudo']) && isset($_POST['pass'])) {
+                    $member = new Member();
+                    $member->connexionUser($_POST['pseudo'], $_POST['pass']);
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+
+            if (isset($_GET['action'])) {
+        
+                if ($_GET['action'] == 'listPosts') {
+                    $blog = new Blog();
+                    $blog->listPosts();
+                }
+            }
+        }
 
         else{
             $blog = new Blog();
