@@ -2,7 +2,7 @@
 require_once("Manager.php");
 class ListeRecettesManager extends Manager { 
 
-    public function AfficheRecettes($filtre){
+    public function showRecipe($filtre){
           
         $pdo = $this->dbConnect();
 

@@ -35,9 +35,8 @@ require 'controller/Member.php';
                 $blog->filtre();
             }
             elseif ($_GET['action'] == 'afficheFiltre') {
-                $listeRecette = new ListeRecettesManager();
-                $listeRecette->AfficheRecettes($_POST['filtre']);
-                require "listeRecettes.php";
+                $blog = new Blog();
+                $blog->afficheRecettes($_POST['filtre']);
             }
         }
 

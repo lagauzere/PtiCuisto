@@ -1,11 +1,6 @@
 
 <?php ob_start(); ?>
-    <header>
-        <?php include("navbar.php"); ?>
-
-        <?php require_once 'connexion.php'; ?>
-    </header>
-
+   
     <p class="header">Voici les recettes correspondant à vos critères :</p>
     <?php
 

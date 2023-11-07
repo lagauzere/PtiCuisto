@@ -1,6 +1,5 @@
 <?php ob_start(); ?>
 
-<?php include("navbar.php"); ?>
 
     <form class="text-center" method="post">
 
@@ -26,11 +25,11 @@
         } ?>
         <div id="ChoixForm">
             <form class="text-center" action="index.php?action=afficheFiltre" method="post">
-                <input type="radio" name=entree value=entree id=filtre>
+                <input type="radio" name=filtre value=entree id=entree>
                 <label class="text-blue-500" for="entree" >Entree</label>
-                <input type="radio" name=plat value=plat id=filtre>
+                <input type="radio" name=filtre value=plat id=plat>
                 <label class="text-blue-500" for="plat">Plat</label>
-                <input type="radio" name=dessert value=dessert id=filtre>
+                <input type="radio" name=filtre value=dessert id=dessert>
                 <label class="text-blue-500" for="dessert">Dessert</label>
                 <br>
                 <input class="text-blue-500" type="submit" name=Filtrer value=filtre id=filtre>
@@ -44,7 +43,7 @@
         } ?>
         <div id="ChoixForm">
             <form action="listeRecettes.php" method="post">
-                <input type="text" name=titre id="filre">
+                <input type="text" name=filtre id="titre">
                 <br>
                 <input class="text-blue-500 text-center" type="submit" name=Filtrer value=filtre id=filtre>
             </form>
@@ -57,7 +56,7 @@
 
         <div id="ChoixForm">
             <form action="listeRecettes.php" method="post">
-                <input type="text" id=filtre name=ingredient>
+                <input type="text" id=ingredient name=filtre>
                 <br>
                 <input class="text-blue-500 text-center" type="submit" name=Filtrer value=filtre id=filtre>
             </form>

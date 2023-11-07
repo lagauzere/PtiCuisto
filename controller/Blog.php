@@ -1,5 +1,6 @@
 <?php
     require './model/RecipeManager.php'; 
+    require './model/ListeRecettesManager.php'; 
 class Blog 
 {
     // Méthode pour afficher les chapitres / page d'accueil
@@ -15,6 +16,12 @@ class Blog
         require ('./view/filtres.php');
     }
 
-    
+    public function afficheRecettes($filtre){
+        $ListeRecettesManager = new ListeRecettesManager();
+        $ListeRecettesManager->showRecipe($filtre);
+        require("./view/ListeRecettes.php");
+    }
+
+
 
 }
