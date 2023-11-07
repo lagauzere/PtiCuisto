@@ -11,4 +11,10 @@ class Blog
         require('./view/homeview.php');
     }
 
+    public function filtre(){
+        require ('./view/filtres.php');
+    }
+
+    
+
 }

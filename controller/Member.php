@@ -44,5 +44,7 @@ class Member
         header('location: index.php?action=listPosts');
     }
 
+    
+
 
 }

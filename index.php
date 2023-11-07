@@ -29,6 +29,16 @@ require 'controller/Member.php';
                 $member = new Member();
                 $member->deconnexion();
             }
+
+            elseif ($_GET['action'] == 'filtre') {
+                $blog = new Blog();
+                $blog->filtre();
+            }
+            elseif ($_GET['action'] == 'afficheFiltre') {
+                $listeRecette = new ListeRecettesManager();
+                $listeRecette->AfficheRecettes($_POST['filtre']);
+                require "listeRecettes.php";
+            }
         }
 
         else{

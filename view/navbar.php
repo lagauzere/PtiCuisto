@@ -47,7 +47,7 @@
                         <a href="#" id="hrefcolor"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Nos
                             recettes</a>
-                        <a href="filtres.php" id="hrefcolor"
+                        <a href="index.php?action=filtre" id="hrefcolor"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Filtres</a>
                             <?php if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])) {?>
                                 <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=mesRecettes">Mes recettes</a>
