@@ -9,4 +9,11 @@ class RecipeManager extends Manager {
         $req = $pdo->query('SELECT * FROM RECETTE creation_date  order by rec_date_creation desc LIMIT 0,3');
         return $req;
     }
+
+    public function getUserRecipe($id)
+    {
+        $pdo = $this->dbConnect();
+        $req = $pdo->query('SELECT * FROM RECETTE WHERE REC_AUTEUR = '.$id );
+        return $req;
+    }
 }

@@ -11,4 +11,10 @@ class Blog
         require('./view/homeview.php');
     }
 
+    public function listsUsersRecipes(){
+        $recipeManager = new RecipeManager();
+        $userRecipe = $recipeManager->getUserRecipe($_SESSION['id']);
+        require('./view/listeRecettesUser.php');
+    }
+
 }
