@@ -16,5 +16,15 @@ class Blog
         $userRecipe = $recipeManager->getUserRecipe($_SESSION['id']);
         require('./view/listeRecettesUser.php');
     }
+    
+
+
+    public function addRecipes(){
+        require('view/ajoutRecette.php');
+    }
+
+    public function saveRecipe(){
+
+    }
 
 }

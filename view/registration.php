@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="pass">Mot de passe</label>
                         <input class="form-control border border-info" type="password" id="pass" name="pass">
-                        <div class="font-weight-light font-italic text-info"><?php echo $errorPassword ?? "";?></div>
+                        <div class="font-weight-light font-italic text-info"><?= $errorPassword ?? "";?></div>
                     </div>
                     <div class="form-group">
                         <label for="pass2">Confirmation du mot de passe</label>
@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input class="form-control border border-info" type="text" id="email" name="email">
-                        <div class="font-weight-light font-italic text-info"><?php echo $errorEmail ?? "";?></div>
+                        <div class="font-weight-light font-italic text-info"><?= $errorEmail ?? "";?></div>
                     </div>
                     <button type="submit" class="text-white btn-info btn-sm shadow">Confirmer</button>
                 </form>

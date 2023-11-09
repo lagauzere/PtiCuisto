@@ -39,13 +39,9 @@ require 'controller/Member.php';
                $blog->listsUsersRecipes();
             }
 
-            elseif ($_GET['action'] == 'mesRecettes') {
+             elseif ($_GET['action'] == 'ajouterRecette') {
                 $blog = new Blog();
-                $blog->listsUsersRecipes();
-             }
-
-             elseif ($_GET['action'] == 'AjouterRecette') {
-                echo "slt";
+                $blog->addRecipes();
              }
         }
 

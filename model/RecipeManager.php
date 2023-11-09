@@ -1,8 +1,14 @@
 <?php
 
 require_once("Manager.php");
+
 class RecipeManager extends Manager {
-    // Requête pour afficher les chapitres / page d'acceuil + gestion administrateur
+
+    /**
+     * Do a query to database to have 3 latest recipes added
+     *  
+     * @return void
+     */
     public function getPosts()
     {
         $pdo = $this->dbConnect();
@@ -10,10 +16,19 @@ class RecipeManager extends Manager {
         return $req;
     }
 
+    
+    /**
+     * Do a query to database to have all user's recipes. 
+     * 
+     * @param [int] $id
+     * @return void
+     */
     public function getUserRecipe($id)
     {
         $pdo = $this->dbConnect();
         $req = $pdo->query('SELECT * FROM RECETTE WHERE REC_AUTEUR = '.$id );
         return $req;
     }
+
+    
 }
