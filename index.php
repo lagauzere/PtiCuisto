@@ -52,11 +52,19 @@ require 'controller/Member.php';
                 $member = new Member();
                 $member->registration();
             }
+             elseif ($_GET['action'] == 'nosRecettes') {
+                $blog = new blog();
+                $blog->nosRecettes();
+            }
+
+
+
         }
 
         else{
             $blog = new Blog();
             $blog->listPosts();
+            
         }
     } catch(Exception $e){
         Echo 'Erreur : ' . $e->getMessage();

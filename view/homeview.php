@@ -72,8 +72,11 @@
             <img class="h-56 w-auto" src="assets/img/Pticuisto.png" alt="PtiCuisto">
         </div>
         <h2 id="h2Edito">Edito</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula bibendum libero maximus mattis. Nullam.
-        </p>
+        
+       
+        <?php 
+         echo '<p>'.$posts3[0]['content'].'</p>';
+        ?>
     </div>
 
     <div class="editoMobile block sm:hidden">
@@ -82,8 +85,9 @@
             <img class="h-56 w-auto" src="assets/img/Pticuisto.png" alt="PtiCuisto">
         </div>
         <h2 id="h2Edito">Edito</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula bibendum libero maximus mattis. Nullam.
-        </p>
+         <?php 
+        echo '<p>'.$posts3[0]['content'].'</p>';
+        ?> 
     </div>
 
     <div class="derRecette hidden sm:block">

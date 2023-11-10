@@ -1,13 +1,16 @@
 <?php
     require './model/RecipeManager.php'; 
+    require './model/EditoManager.php'; 
 class Blog 
 {
     // Méthode pour afficher les chapitres / page d'accueil
     public function listPosts()
     {
+        $EditoManager=new EditoManager();
         $recipeManager = new RecipeManager(); 
         $posts = $recipeManager->getPosts(); 
         $posts2 = $recipeManager->getPosts(); 
+        $posts3 = $EditoManager->getEdito();
         require('./view/homeview.php');
     }
 
@@ -41,5 +44,10 @@ class Blog
     }
 
 
+    public function nosRecettes(){
+        $recipeManager= new RecipeManager();
+        $recipes=$recipeManager->showourrecipes();
+        require("./view/nosRecettes.php");
+    }
 
 }
