@@ -1,14 +1,37 @@
 <?php
 
 require_once("Manager.php");
+
 class RecipeManager extends Manager {
-    // Requête pour afficher les chapitres / page d'acceuil + gestion administrateur
+
+    /**
+     * Do a query to database to have 3 latest recipes added
+     *  
+     * @return void
+     */
     public function getPosts()
     {
         $pdo = $this->dbConnect();
         $req = $pdo->query('SELECT * FROM RECETTE creation_date  order by rec_date_creation desc LIMIT 0,3');
         return $req;
     }
+
+    
+    /**
+     * Do a query to database to have all user's recipes. 
+     * 
+     * @param [int] $id
+     * @return void
+     */
+    public function getUserRecipe($id)
+    {
+        $pdo = $this->dbConnect();
+        $req = $pdo->query('SELECT * FROM RECETTE WHERE REC_AUTEUR = '.$id );
+        return $req;
+    }
+
+    
+
 
     public function showRecipe($filtre){
         $sqlQuery; 

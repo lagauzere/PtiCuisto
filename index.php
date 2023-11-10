@@ -38,6 +38,20 @@ require 'controller/Member.php';
                 $blog = new Blog();
                 $blog->afficheRecettes($_POST['filtre']);
             }
+
+            elseif ($_GET['action'] == 'mesRecettes') {
+                $blog = new Blog();
+                $blog->listsUsersRecipes();
+             }
+ 
+              elseif ($_GET['action'] == 'ajouterRecette') {
+                 $blog = new Blog();
+                 $blog->addRecipes();
+              }
+              elseif ($_GET['action'] == 'registration') {
+                $member = new Member();
+                $member->registration();
+            }
         }
 
         else{
