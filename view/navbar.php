@@ -52,8 +52,8 @@
                                 <?php 
                                     if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])) {
                                 ?>
-                                <a class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=mesRecettes">Mes recettes</a>
-                                         <a class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=deconnexion">Se deconnecter</a>
+                                    <a class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=mesRecettes">Mes recettes</a>
+                                    <a class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=deconnexion">Se deconnecter</a>
                                 <?php 
                                 } 
                                     else { 

@@ -23,8 +23,10 @@ class Blog
         require('view/ajoutRecette.php');
     }
 
-    public function saveRecipe(){
-
+    public function saveRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $categoryRecipe){
+        $recipeManager = new RecipeManager();
+        $recipeManager->sauvegarderRecette($nameRecipe, $contentRecipe, $summaryRecipe, $categoryRecipe, $_SESSION['id']);
+        header('location: index.php?action=mesRecettes'); 
     }
 
 }

@@ -59,10 +59,10 @@
         ?>
         <div class="recette">
             <p>
-                <?php echo '<img src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
-                    '<div class="titre">' . $recipe['REC_TITRE'] . '</div>' . "<br>" .
-                    '<div class="categorie">' . $recipe['CAT_INTITULE'] . '</div>' . '<br>' .
-                    '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . '<br>';
+                <?= '<img src="'.$recipe['REC_IMAGE'] .'"/>'.'\n'.
+                        '<div class="titre">'.$recipe['REC_TITRE'].'</div>'.'\n'.
+                    '<div class="categorie">'.$recipe['CAT_INTITULE'].'</div>'.'\n' .
+                    '<div class="resume">'.$recipe['REC_RESUME'].'</div>'.'\n';
                 // $recipe['REC_TAG']
                 ?>
             </p>

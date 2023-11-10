@@ -5,13 +5,11 @@
     <?php 
         foreach($userRecipe as $recipe ){?>
             <div class="recette">
-            <p>
+            
                 <?= '<img class="imgR" src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
-                    '<div class="titre">' . $recipe['REC_TITRE'] . '</div>' . "<br>" .
-                    '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "<br>";
-               
-                ?>
-            </p>
+                        '<a href="index.php?action=voirRecette"> <h1>' . $recipe['REC_TITRE'] . '</h1> </a>' . "\n" .
+                        '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "\n";
+                ?>            
         </div>
         <?php
         }

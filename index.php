@@ -43,6 +43,18 @@ require 'controller/Member.php';
                 $blog = new Blog();
                 $blog->addRecipes();
              }
+
+             elseif ($_GET['action'] == 'saveRecipe') {
+
+                
+                if (isset($_POST['nameRecipe']) && isset($_POST['contentRecipe']) && isset($_POST['summaryRecipe']) && isset($_POST['CategoryRecipe'])) {
+                    $blog = new Blog();
+                    $blog->saveRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['CategoryRecipe']);
+                } else {
+                    throw new Exception('Tous les champs ne sont pas remplis');
+                }
+             }
+
         }
 
         else{
