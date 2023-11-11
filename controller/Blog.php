@@ -1,5 +1,6 @@
 <?php
     require './model/RecipeManager.php'; 
+    $categoryRecipeID;
 class Blog 
 {
     // Méthode pour afficher les chapitres / page d'accueil
@@ -24,8 +25,15 @@ class Blog
     }
 
     public function saveRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $categoryRecipe){
+        if ($categoryRecipe === 'Entrée') {
+            $categoryID = 1;
+        } elseif ($categoryRecipe === 'Plat') {
+            $categoryID = 2;
+        } elseif ($categoryRecipe === 'Dessert') {
+            $categoryID = 3;
+        }
         $recipeManager = new RecipeManager();
-        $recipeManager->sauvegarderRecette($nameRecipe, $contentRecipe, $summaryRecipe, $categoryRecipe, $_SESSION['id']);
+        $recipeManager->sauvegarderRecette($nameRecipe, $contentRecipe, $summaryRecipe, $categoryID, $_SESSION['id']);
         header('location: index.php?action=mesRecettes'); 
     }
 

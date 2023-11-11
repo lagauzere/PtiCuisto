@@ -46,7 +46,6 @@ require 'controller/Member.php';
 
              elseif ($_GET['action'] == 'saveRecipe') {
 
-                
                 if (isset($_POST['nameRecipe']) && isset($_POST['contentRecipe']) && isset($_POST['summaryRecipe']) && isset($_POST['CategoryRecipe'])) {
                     $blog = new Blog();
                     $blog->saveRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['CategoryRecipe']);
