@@ -68,6 +68,10 @@ require 'controller/Member.php';
                     throw new Exception('Vous devez écrire un edito');
                 }
             }
+            elseif ($_GET['action'] == 'detailRecette') {
+                $blog = new blog();
+                $blog->detail($_GET['recette']);
+            }           
         }
 
         else{

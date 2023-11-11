@@ -60,4 +60,10 @@ class Blog
         header('location: index.php'); 
     }
 
+    public function detail($recette){
+        $recipeManager= new RecipeManager();
+        $recipes=$recipeManager->showDetails($recette);
+        require("./view/detailRecette.php");
+    }
+
 }

@@ -80,4 +80,17 @@ class RecipeManager extends Manager {
          $recipes = $recipesStatement->fetchAll();
          return $recipes;
     }
+
+    public function showDetails($title){
+        $sqlQuery; 
+        $pdo = $this->dbConnect();
+        $sqlQuery = 'SELECT REC_ID, REC_IMAGE, REC_RESUME, REC_TITRE, REC_CONTENU
+        FROM RECETTE WHERE REC_TITRE="'.$title.'"';
+         $recipesStatement = $pdo->prepare($sqlQuery);
+         $recipesStatement->execute();
+         $recipes = $recipesStatement->fetchAll();
+         return $recipes;
+    }
+
+
 }
