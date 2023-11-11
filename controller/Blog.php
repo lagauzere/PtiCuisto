@@ -50,4 +50,8 @@ class Blog
         require("./view/nosRecettes.php");
     }
 
+    public function options(){
+        require ('./view/options.php');
+    }
+
 }

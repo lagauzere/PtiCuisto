@@ -56,9 +56,14 @@ require 'controller/Member.php';
                 $blog = new blog();
                 $blog->nosRecettes();
             }
-
-
-
+            elseif ($_GET['action'] == 'optionsAdmin') {
+                $blog = new blog();
+                $blog->options();
+            }
+            elseif ($_GET['action'] == 'saveEdito') {
+             
+                
+            }
         }
 
         else{

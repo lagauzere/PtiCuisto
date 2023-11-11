@@ -65,7 +65,7 @@
                                 <?php 
                                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
                                 ?>
-                                    <a class="text-white-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="">Options Admin</a>                                                                         
+                                    <a class="text-white-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=optionsAdmin">Options Admin</a>                                                                         
                                 <?php 
                                 }
                                 ?>     
@@ -83,7 +83,7 @@
                 <a href="index.php?action=nosRecettes" id="hrefcolor"
                     class="text-white-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Nos
                     recettes</a>
-                <a href="filtres.php" id="hrefcolor"
+                <a href="index.php?action=filtre" id="hrefcolor"
                     class="text-white-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Filtres</a>
                     <?php 
                                     if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])) {
@@ -101,7 +101,7 @@
                                 <?php 
                                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
                                 ?>
-                                    <a class="text-white-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="">Options Admin</a>                                                                         
+                                    <a class="text-white-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" href="index.php?action=optionsAdmin">Options Admin</a>                                                                         
                                 <?php 
                                 }
                                 ?>     
