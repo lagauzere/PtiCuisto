@@ -12,5 +12,11 @@ class EditoMAnager extends Manager {
          $Edito = $EditoStatement->fetchAll();
          return $Edito;
         
+    }   
+    public function save($edito){
+        $pdo = $this->dbConnect();
+        $sqlQuery = 'UPDATE Edito set content="'.$edito.'" WHERE id=1';
+        $EditoStatement = $pdo->prepare($sqlQuery);
+        $EditoStatement->execute();
     }
 }

@@ -61,8 +61,12 @@ require 'controller/Member.php';
                 $blog->options();
             }
             elseif ($_GET['action'] == 'saveEdito') {
-             
-                
+                if (isset($_POST['contentEdito'])){    
+                    $blog = new blog();
+                    $blog->Enregistrer($_POST['contentEdito']);
+                } else {
+                    throw new Exception('Vous devez écrire un edito');
+                }
             }
         }
 

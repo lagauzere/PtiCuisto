@@ -54,4 +54,10 @@ class Blog
         require ('./view/options.php');
     }
 
+    public function Enregistrer($edito){
+        $EditoManager=new EditoManager();
+        $EditoManager->save($edito);
+        header('location: index.php'); 
+    }
+
 }
