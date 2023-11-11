@@ -3,7 +3,7 @@ require_once("Manager.php");
 class ListeRecettesManager extends Manager { 
 
     public function showRecipe($filtre){
-          
+        $sqlQuery; 
         $pdo = $this->dbConnect();
 
         if($filtre== 'entree'){
@@ -21,13 +21,14 @@ class ListeRecettesManager extends Manager {
                 }
     
             else if ($filtre== 'titre'){
-                $sqlQuery = 'SELECT * FROM RECETTE,CATEGORIE Where REC_TITRE like "%'.$_POST['titre'].'%"';
+                
+                $sqlQuery = 'SELECT * FROM RECETTE Where REC_TITRE like "%'.$_POST['nom'].'%"';
                 }
     
             else if ($filtre== 'ingredient'){
                 $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,CAT_INTITULE,REC_RESUME 
                 FROM RECETTE,INGREDIENT,CATEGORIE WHERE lower(ING_INTITULE) 
-                like "%'.$_POST['ingredient'].'%" and REC_CONTENU like "%'.$_POST['ingredient'].'%" and RECETTE.CAT_ID= CATEGORIE.CAT_ID;';
+                like "%'.$_POST['nomIngredient'].'%" and lower(REC_CONTENU) like "%'.$_POST['nomIngredient'].'%" and RECETTE.CAT_ID= CATEGORIE.CAT_ID;';
                 //"%'.$_POST['ingredient'].'%" or REC_TITRE like "%'.$_POST['ingredient'].'%"';
                 }
        
@@ -36,5 +37,4 @@ class ListeRecettesManager extends Manager {
         $recipes = $recipesStatement->fetchAll();
         return $recipes;
     }
-
-     }
+}

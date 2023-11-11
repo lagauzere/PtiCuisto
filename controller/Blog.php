@@ -18,8 +18,8 @@ class Blog
 
     public function afficheRecettes($filtre){
         $ListeRecettesManager = new ListeRecettesManager();
-        $ListeRecettesManager->showRecipe($filtre);
-        require("./view/ListeRecettes.php");
+        $recipes=$ListeRecettesManager->showRecipe($filtre);
+        require("./view/listeRecettes.php");
     }
 
 

@@ -25,14 +25,14 @@
         } ?>
         <div id="ChoixForm">
             <form class="text-center" action="index.php?action=afficheFiltre" method="post">
-                <input type="radio" name=filtre value=entree id=entree>
+                <input type="radio" name="filtre" value="entree" id="entree">
                 <label class="text-blue-500" for="entree" >Entree</label>
-                <input type="radio" name=filtre value=plat id=plat>
+                <input type="radio" name="filtre" value="plat" id="plat">
                 <label class="text-blue-500" for="plat">Plat</label>
-                <input type="radio" name=filtre value=dessert id=dessert>
+                <input type="radio" name="filtre" value="dessert" id="dessert">
                 <label class="text-blue-500" for="dessert">Dessert</label>
                 <br>
-                <input class="text-blue-500" type="submit" name=Filtrer value=filtre id=filtre>
+                <input class="text-blue-500" type="submit" name="Filtrer" value="filtre" id="filtre">
             </form>
         </div>
 
@@ -42,10 +42,10 @@
             titre();
         } ?>
         <div id="ChoixForm">
-            <form action="listeRecettes.php" method="post">
-                <input type="text" name=filtre id="titre">
+            <form action="index.php?action=afficheFiltre" method="post">
+                <input type="text" name="nom" id="titre">
                 <br>
-                <input class="text-blue-500 text-center" type="submit" name=Filtrer value=filtre id=filtre>
+                <input class="text-blue-500 text-center" type="submit" name="filtre" value="titre" id="titre"> 
             </form>
         </div>
         <?php
@@ -55,10 +55,10 @@
         } ?>
 
         <div id="ChoixForm">
-            <form action="listeRecettes.php" method="post">
-                <input type="text" id=ingredient name=filtre>
+            <form action="index.php?action=afficheFiltre" method="post">
+                <input type="text" id="ingredient" name="nomIngredient">
                 <br>
-                <input class="text-blue-500 text-center" type="submit" name=Filtrer value=filtre id=filtre>
+                <input class="text-blue-500 text-center" type="submit" name=filtre value="ingredient" id="filtre">
             </form>
         </div>
 
