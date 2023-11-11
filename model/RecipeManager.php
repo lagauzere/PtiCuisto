@@ -61,4 +61,42 @@ class RecipeManager extends Manager {
             throw new Exception("Erreur d'insertion : " . $e->getMessage());
         }
     }
+
+    public function sauvegarderRecetteAvecImage($nameRecipe, $contentRecipe, $summaryRecipe, $categoryRecipeID, $id, $imageRecipe) {
+        try {
+            $rec_id = $this->maxRecetteID();
+
+            $pdo = $this->dbConnect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_image ,rec_date_creation, rec_auteur) 
+                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, :rec_image ,CURDATE(), :rec_auteur)");
+
+            $stmt->bindParam(':rec_id', $rec_id, PDO::PARAM_INT);
+            $stmt->bindParam(':cat_id', $categoryRecipeID, PDO::PARAM_INT);
+            $stmt->bindParam(':rec_titre', $nameRecipe, PDO::PARAM_STR);
+            $stmt->bindParam(':rec_contenu', $contentRecipe, PDO::PARAM_STR);
+            $stmt->bindParam(':rec_resume', $summaryRecipe, PDO::PARAM_STR);
+            $stmt->bindParam(':rec_image', $imageRecipe, PDO::PARAM_STR);
+            $stmt->bindParam(':rec_auteur', $id, PDO::PARAM_INT);
+            
+
+            $stmt->execute();
+
+            $pdo = null;
+        } catch (PDOException $e) {
+            echo $categoryRecipeID;
+            echo $imageRecipe;
+            throw new Exception("Erreur d'insertion : " . $e->getMessage());
+        }
+    }
+
+    public function deleteRecipe($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM RECETTE WHERE REC_ID = ?');
+        $deletedRecipe = $req->execute(array($id));
+
+        return $deletedRecipe;
+    }
 }

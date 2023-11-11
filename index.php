@@ -48,12 +48,15 @@ require 'controller/Member.php';
 
                 if (isset($_POST['nameRecipe']) && isset($_POST['contentRecipe']) && isset($_POST['summaryRecipe']) && isset($_POST['CategoryRecipe'])) {
                     $blog = new Blog();
-                    $blog->saveRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['CategoryRecipe']);
+                    $blog->saveRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['CategoryRecipe'], $_POST['imageRecipe']);
                 } else {
                     throw new Exception('Tous les champs ne sont pas remplis');
                 }
              }
-
+             elseif ($_GET['action'] == 'supprimerRecette') {
+                $blog = new Blog();
+                $blog->supprimerRecette($_GET['rec_id']);
+             }
         }
 
         else{
