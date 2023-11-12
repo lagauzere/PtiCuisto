@@ -44,15 +44,15 @@ class RecipeManager extends Manager {
         $pdo = $this->dbConnect();
 
         if($filtre== 'entree'){
-            $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE
+            $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE, REC_STATUT
              FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "entree" ) and CAT_INTITULE = "entree"';
             }
             else if ($filtre== 'plat'){
-                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE
+                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE, REC_STATUT
                  FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "plat" ) and CAT_INTITULE = "plat"';
                 }
             else if ($filtre== 'dessert'){
-                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE 
+                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE , REC_STATUT
                 FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "dessert" )
                  and RECETTE.CAT_ID= CATEGORIE.CAT_ID  ; ';
                 }
@@ -64,7 +64,7 @@ class RecipeManager extends Manager {
     
     
             else if ($filtre== 'ingredient'){
-                $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,REC_RESUME 
+                $sqlQuery = 'SELECT DISTINCT(REC_ID), REC_TITRE, REC_IMAGE, REC_RESUME, REC_STATUT
                 FROM ÊTRE_PRÉSENT
                 JOIN INGREDIENT USING (ING_ID) JOIN RECETTE USING (REC_ID)
                 WHERE lower(ING_INTITULE) like "%'.$_POST['nomIngredient'].'%" OR lower(REC_RESUME) like "%'.$_POST['nomIngredient'].'%"';
@@ -80,7 +80,7 @@ class RecipeManager extends Manager {
     public function showourrecipes(){
         $sqlQuery; 
         $pdo = $this->dbConnect();
-        $sqlQuery = 'SELECT REC_ID, REC_IMAGE, REC_RESUME, REC_TITRE
+        $sqlQuery = 'SELECT REC_ID, REC_IMAGE, REC_RESUME, REC_TITRE, REC_STATUT
         FROM RECETTE';
          $recipesStatement = $pdo->prepare($sqlQuery);
          $recipesStatement->execute();
