@@ -20,8 +20,6 @@ class Blog
         $userRecipe = $recipeManager->getUserRecipe($_SESSION['id']);
         require('./view/listeRecettesUser.php');
     }
-    
-
 
     public function addRecipes(){
         require('view/ajoutRecette.php');
@@ -46,9 +44,6 @@ class Blog
             header('location: index.php?action=mesRecettes'); 
         }
     }
-
-
-
 
     public function filtre(){
         require ('./view/filtres.php');
@@ -78,18 +73,7 @@ class Blog
         $recipes=$recipeManager->showDetails($recette);
         require("./view/detailRecette.php");
     }
-    public function supprimerRecette($id){
-        if(!isset($_SESSION['id'])) { // Sécurité si ce n'est pas un membre redirection vers la page de connexion
-            header('Location: index.php?action=connexion');
-            die();
-        }
-        
-        if (isset($_SESSION['id'])) { // Vérification si l'utilisateur est connecté
-            $recipeManager = new RecipeManager();
-            $recipeManager->deleteRecipe($id);
-            header('location: index.php?action=mesRecettes'); 
-        }
-    }
+    
      
     public function modifierRecette($rec_id) {
         // Vérifiez si l'utilisateur est connecté
@@ -103,7 +87,7 @@ class Blog
         $recipe = $recipeManager->getRecipeById($rec_id);
     
         // Vérifiez si l'utilisateur connecté est l'auteur de la recette
-        if ($_SESSION['id'] == $recipe['REC_AUTEUR']) {
+        if ($_SESSION['id'] == $recipe['REC_AUTEUR'] || isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
             // Affichez le formulaire de modification pré-rempli avec les détails de la recette
             require('view/modifierRecette.php');
         } else {
@@ -114,8 +98,20 @@ class Blog
 
     public function updateRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id) {
        $recipeManager = new RecipeManager();
-       $recipeManager->updateRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id);
-       header('Location: index.php?action=mesRecettes');
+       if(isset($_SESSION['admin']) && $_SESSION['admin'] == 0){
+            $recipeManager->updateRecipeAdmin($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id);
+            header('Location: index.php?action=optionsAdmin');
+       } else {
+            $recipeManager->updateRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id);
+            header('Location: index.php?action=mesRecettes');
+       }
+       
     }
-
+    
+    public function supprimerRecette($rec_id){
+        $rec_id = (int)$rec_id;
+        $recipeManager = new RecipeManager();
+        $recipeManager->deleteRecipe($rec_id);
+        header('Location: index.php?action=mesRecettes');
+    }
 }

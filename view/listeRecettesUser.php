@@ -10,11 +10,10 @@
                 <div class="resume"><?=$recipe['REC_RESUME'];?></div>
                 
                 <?php
-                 if ($recipe['REC_STATUT']==1){?>
-                    <p>Recette en cours de validation par un administrateur. <p>';
-                 <?php}elseif($recipe['REC_REFU']==1){ ?>
-                    <p>Recette refusé par un administrateur, veuillez la modfier. <p>'
-                <?php
+                 if ($recipe['REC_STATUT']==1){
+                    echo'<p>Recette en cours de validation par un administrateur. <p>';
+                 }elseif($recipe['REC_REFU']==1){
+                    echo'<p>Recette refusé par un administrateur, veuillez la modfier. <p>';
                  }
                 ?>
                   <a class="font-weight-light font-italic text-info" href="index.php?action=supprimerRecette&amp;rec_id=<?= $recipe['REC_ID'] ?>">
