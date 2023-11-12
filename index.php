@@ -38,11 +38,46 @@ require 'controller/Member.php';
                 $blog = new Blog();
                 $blog->afficheRecettes($_POST['filtre']);
             }
+
+            elseif ($_GET['action'] == 'mesRecettes') {
+                $blog = new Blog();
+                $blog->listsUsersRecipes();
+             }
+ 
+              elseif ($_GET['action'] == 'ajouterRecette') {
+                 $blog = new Blog();
+                 $blog->addRecipes();
+              }
+              elseif ($_GET['action'] == 'registration') {
+                $member = new Member();
+                $member->registration();
+            }
+             elseif ($_GET['action'] == 'nosRecettes') {
+                $blog = new blog();
+                $blog->nosRecettes();
+            }
+            elseif ($_GET['action'] == 'optionsAdmin') {
+                $blog = new blog();
+                $blog->options();
+            }
+            elseif ($_GET['action'] == 'saveEdito') {
+                if (isset($_POST['contentEdito'])){    
+                    $blog = new blog();
+                    $blog->Enregistrer($_POST['contentEdito']);
+                } else {
+                    throw new Exception('Vous devez écrire un edito');
+                }
+            }
+            elseif ($_GET['action'] == 'detailRecette') {
+                $blog = new blog();
+                $blog->detail($_GET['recette']);
+            }           
         }
 
         else{
             $blog = new Blog();
             $blog->listPosts();
+            
         }
     } catch(Exception $e){
         Echo 'Erreur : ' . $e->getMessage();

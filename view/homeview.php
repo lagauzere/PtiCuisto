@@ -72,12 +72,11 @@
             <img class="h-56 w-auto" src="assets/img/Pticuisto.png" alt="PtiCuisto">
         </div>
         <h2 id="h2Edito">Edito</h2>
-        <p>Chers petits chefs en herbe, parents, et amis de la cuisine,
-
-Nous sommes ravis de vous accueillir sur "ptiCuisto" ! Chez "ptiCuisto", notre mission est simple, mais essentielle : inspirer, éduquer et encourager les enfants à devenir de véritables chefs en cuisine, tout en passant un moment amusant et mémorable en famille.
-
-La cuisine est une véritable aventure, un voyage fascinant à travers les saveurs, les textures et les couleurs. Chez "ptiCuisto", nous croyons que cet apprentissage peut être à la fois amusant et éducatif. Notre site a été spécialement conçu pour que les jeunes chefs puissent explorer le monde de la cuisine de manière ludique, créative et sécuritaire.
-        </p>
+        
+       
+        <?php 
+         echo '<p>'.$posts3[0]['content'].'</p>';
+        ?>
     </div>
 
     <div class="editoMobile block sm:hidden">
@@ -86,12 +85,9 @@ La cuisine est une véritable aventure, un voyage fascinant à travers les saveu
             <img class="h-56 w-auto" src="assets/img/Pticuisto.png" alt="PtiCuisto">
         </div>
         <h2 id="h2Edito">Edito</h2>
-        <p>Chers petits chefs en herbe, parents, et amis de la cuisine,
-
-Nous sommes ravis de vous accueillir sur "ptiCuisto" ! Chez "ptiCuisto", notre mission est simple, mais essentielle : inspirer, éduquer et encourager les enfants à devenir de véritables chefs en cuisine, tout en passant un moment amusant et mémorable en famille.
-
-La cuisine est une véritable aventure, un voyage fascinant à travers les saveurs, les textures et les couleurs. Chez "ptiCuisto", nous croyons que cet apprentissage peut être à la fois amusant et éducatif. Notre site a été spécialement conçu pour que les jeunes chefs puissent explorer le monde de la cuisine de manière ludique, créative et sécuritaire.
-        </p>
+         <?php 
+        echo '<p>'.$posts3[0]['content'].'</p>';
+        ?> 
     </div>
 
     <div class="derRecette hidden sm:block">
@@ -120,7 +116,7 @@ La cuisine est une véritable aventure, un voyage fascinant à travers les saveu
         ?>
         <div class="recette">
             <p>
-                <?php echo '<img class="imgR" src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
+                <?= '<img class="imgR" src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
                     '<div class="titre">' . $recipe['REC_TITRE'] . '</div>' . "<br>" .
                     '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "<br>";
                 // $recipe['REC_TAG']
