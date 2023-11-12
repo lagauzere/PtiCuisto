@@ -6,12 +6,11 @@
         ?>
         <div class="recette">
             <p>
-                <?php echo '
-                <img  src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
-                    '<div class="titre">' . $recipe['REC_TITRE'] . '</div>' . "<br>" .
-                    '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "<br>".
-                    '<div class="resume">' . $recipe['REC_CONTENU'] . '</div>' . "<br>";
-                ?>
+                <img src="<?=$recipe['REC_IMAGE'];?>"/> <br>
+                <div class="titre"> <?= $recipe['REC_TITRE']; ?> </div> <br>
+                <div class="resume"> <?= $recipe['REC_RESUME']; ?> </div> <br>
+                <div class="resume"> <?= $recipe['REC_CONTENU']; ?> <div> <br>
+
             </p>
         </div>
         <?php

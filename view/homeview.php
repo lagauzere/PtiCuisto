@@ -72,8 +72,6 @@
             <img class="h-56 w-auto" src="assets/img/Pticuisto.png" alt="PtiCuisto">
         </div>
         <h2 id="h2Edito">Edito</h2>
-        
-       
         <?php 
          echo '<p>'.$posts3[0]['content'].'</p>';
         ?>

@@ -13,6 +13,10 @@
                   <a class="font-weight-light font-italic text-info" href="index.php?action=supprimerRecette&amp;rec_id=<?= $recipe['REC_ID'] ?>">
                   <button class="text-black btn-info btn-sm shadow">Supprimer la recette</button>
                  </a>
+
+                 <a class="font-weight-light font-italic text-info" href="index.php?action=modifierRecette&amp;rec_id=<?= $recipe['REC_ID'] ?>">
+                  <button class="text-black btn-info btn-sm shadow">Modifier la recette</button>
+                 </a>
         </div>
         <?php
         }
