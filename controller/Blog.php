@@ -68,13 +68,9 @@ class Blog
     }
 
     public function options(){
+        $recipeManager= new RecipeManager();
+        $recipes=$recipeManager->showourRecipesOnHold();
         require ('./view/options.php');
-    }
-
-    public function Enregistrer($edito){
-        $EditoManager=new EditoManager();
-        $EditoManager->save($edito);
-        header('location: index.php'); 
     }
 
     public function detail($recette){
@@ -82,7 +78,6 @@ class Blog
         $recipes=$recipeManager->showDetails($recette);
         require("./view/detailRecette.php");
     }
-
     public function supprimerRecette($id){
         if(!isset($_SESSION['id'])) { // Sécurité si ce n'est pas un membre redirection vers la page de connexion
             header('Location: index.php?action=connexion');
