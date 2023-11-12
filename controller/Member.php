@@ -26,7 +26,7 @@ class Member
 
             
             //if (!$isPasswordCorrect) { // Le membre est informé si le mdp n'est pas enregisté
-            if($pass!=$resultat['per_mdp']){
+            if(!password_verify($pass,$resultat['per_mdp'])){
                 $errorPassword = 'Erreur d\'mot de passe';
                 require('view/connexion.php');
             } 
