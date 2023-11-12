@@ -18,6 +18,33 @@
         </div>
     </div>
 
+
+
+    <p class="header">Voici les recettes en attente de validation :</p>
+    <?php 
+        foreach($recipes as $recipe){?>
+            <div class="recette">
+                <?= '<img class="imgR" src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
+                        '<a href="index.php?action=voirRecette"><div class="titre">' . $recipe['REC_TITRE'] . '</div> </a>' . "\n" .
+                        '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "\n".
+                        '<div class="resume">' . $recipe['REC_CONTENU'] . '</div>' . "\n";
+                ?>
+                  <a class="font-weight-light font-italic text-info" href="index.php?action=accepter&id=<?= $recipe['REC_ID'] ?>">
+                  <button class="text-black btn-info btn-sm shadow">Accepter la recette</button>
+                 </a>
+                 <a class="font-weight-light font-italic text-info" href="index.php?action=refuser&id=<?= $recipe['REC_ID'] ?>">
+                  <button class="text-black btn-info btn-sm shadow">Refuser la recette</button>
+                 </a>
+        </div>
+        <?php
+        }
+    ?>
+
+
+
+
+
+
 <?php $content = ob_get_clean();
     include 'template.php';
 ?>

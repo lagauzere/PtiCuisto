@@ -49,15 +49,15 @@ class RecipeManager extends Manager {
         $pdo = $this->dbConnect();
 
         if($filtre== 'entree'){
-            $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE
+            $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE, REC_STATUT, REC_REFU
              FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "entree" ) and CAT_INTITULE = "entree"';
             }
             else if ($filtre== 'plat'){
-                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE
+                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE, REC_STATUT, REC_REFU
                  FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "plat" ) and CAT_INTITULE = "plat"';
                 }
             else if ($filtre== 'dessert'){
-                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE 
+                $sqlQuery = 'SELECT distinct REC_ID, REC_IMAGE, CAT_INTITULE, REC_RESUME, REC_TITRE, REC_STATUT, REC_REFU
                 FROM RECETTE,CATEGORIE Where RECETTE.CAT_ID in( Select CAT_ID From CATEGORIE where CAT_INTITULE = "dessert" )
                  and RECETTE.CAT_ID= CATEGORIE.CAT_ID  ; ';
                 }
@@ -69,7 +69,7 @@ class RecipeManager extends Manager {
     
     
             else if ($filtre== 'ingredient'){
-                $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,REC_RESUME 
+                $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,REC_RESUME, REC_STATUT, REC_REFU 
                 FROM ÊTRE_PRÉSENT
                 JOIN INGREDIENT USING (ING_ID) JOIN RECETTE USING (REC_ID)
                 WHERE lower(ING_INTITULE) like "%'.$_POST['nomIngredient'].'%" OR lower(REC_RESUME) like "%'.$_POST['nomIngredient'].'%"';
@@ -85,8 +85,7 @@ class RecipeManager extends Manager {
     public function showourrecipes(){
         $sqlQuery; 
         $pdo = $this->dbConnect();
-        $sqlQuery = 'SELECT REC_ID, REC_IMAGE, REC_RESUME, REC_TITRE, REC_STATUT
-        FROM RECETTE';
+        $sqlQuery = 'SELECT * FROM RECETTE';
          $recipesStatement = $pdo->prepare($sqlQuery);
          $recipesStatement->execute();
          $recipes = $recipesStatement->fetchAll();
@@ -113,8 +112,8 @@ class RecipeManager extends Manager {
             $pdo = $this->dbConnect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_date_creation, rec_auteur) 
-                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, CURDATE(), :rec_auteur)");
+            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_date_creation, rec_auteur, REC_STATUS) 
+                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, CURDATE(), :rec_auteur,1)");
 
             $stmt->bindParam(':rec_id', $rec_id, PDO::PARAM_INT);
             $stmt->bindParam(':cat_id', $categoryRecipeID, PDO::PARAM_INT);
@@ -139,8 +138,8 @@ class RecipeManager extends Manager {
             $pdo = $this->dbConnect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_image ,rec_date_creation, rec_auteur) 
-                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, :rec_image ,CURDATE(), :rec_auteur)");
+            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_image ,rec_date_creation, rec_auteur, REC_STATUS) 
+                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, :rec_image ,CURDATE(), :rec_auteur,1)");
 
             $stmt->bindParam(':rec_id', $rec_id, PDO::PARAM_INT);
             $stmt->bindParam(':cat_id', $categoryRecipeID, PDO::PARAM_INT);
@@ -174,7 +173,7 @@ class RecipeManager extends Manager {
         
         try {
         $pdo = $this->dbConnect();
-        $sqlQuery = 'UPDATE RECETTE SET REC_TITRE=:nameRecipe, REC_CONTENU=:contentRecipe, REC_RESUME=:summaryRecipe, REC_DATE_MODIFICATION=CURDATE() WHERE REC_ID=:idRecette';
+        $sqlQuery = 'UPDATE RECETTE SET REC_TITRE=:nameRecipe, REC_CONTENU=:contentRecipe, REC_RESUME=:summaryRecipe, REC_DATE_MODIFICATION=CURDATE(),REC_STATUT=1 WHERE REC_ID=:idRecette';
         $stmt = $pdo->prepare($sqlQuery);
         $stmt->bindParam(':nameRecipe', $nameRecipe, PDO::PARAM_STR);
         $stmt->bindParam(':contentRecipe', $contentRecipe, PDO::PARAM_STR);
@@ -190,4 +189,32 @@ class RecipeManager extends Manager {
         } 
     }
 
+   public function showourRecipesOnHold(){
+    $sqlQuery; 
+    $pdo = $this->dbConnect();
+    $sqlQuery = 'SELECT REC_ID, REC_IMAGE, REC_RESUME, REC_TITRE, REC_STATUT, REC_CONTENU
+    FROM RECETTE where REC_STATUT=1';
+     $recipesStatement = $pdo->prepare($sqlQuery);
+     $recipesStatement->execute();
+     $recipes = $recipesStatement->fetchAll();
+     return $recipes;
+   }
+
+
+   public function accept($id){
+    $sqlQuery; 
+    $pdo = $this->dbConnect();
+    $sqlQuery = 'UPDATE RECETTE SET REC_STATUT=0,REC_REFU=0 where REC_ID='.$id.'';
+    $recipesStatement = $pdo->prepare($sqlQuery);
+    $recipesStatement->execute();
+   }
+
+
+   public function refuse($id){
+    $sqlQuery; 
+    $pdo = $this->dbConnect();
+    $sqlQuery = 'UPDATE RECETTE SET REC_STATUT=0, REC_REFU=1 where REC_ID='.$id.'';
+    $recipesStatement = $pdo->prepare($sqlQuery);
+    $recipesStatement->execute();
+   }
 }

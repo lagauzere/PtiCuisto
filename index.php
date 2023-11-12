@@ -2,6 +2,7 @@
 session_start();
 require 'controller/Blog.php'; 
 require 'controller/Member.php'; 
+require 'controller/Admin.php'; 
     try {
         if (isset($_GET['action'])) {
             if ($_GET['action'] == 'connexion') {
@@ -62,8 +63,8 @@ require 'controller/Member.php';
             }
             elseif ($_GET['action'] == 'saveEdito') {
                 if (isset($_POST['contentEdito'])){    
-                    $blog = new blog();
-                    $blog->Enregistrer($_POST['contentEdito']);
+                    $Admin = new Admin();
+                    $Admin->Enregistrer($_POST['contentEdito']);
                 } else {
                     throw new Exception('Vous devez écrire un edito');
                 }
@@ -100,6 +101,18 @@ require 'controller/Member.php';
                     throw new Exception('Tous les champs ne sont pas remplis');
                 }
              }
+             elseif ($_GET['action'] == 'accepter') {
+                $Admin= new Admin();
+                $Admin->accepter($_GET['id']);
+
+             }
+             elseif ($_GET['action'] == 'refuser') {
+                $Admin= new Admin();
+                $Admin->refuser($_GET['id']);
+             }
+
+            
+
         }
 
         else{

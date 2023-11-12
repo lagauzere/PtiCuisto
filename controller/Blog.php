@@ -68,13 +68,9 @@ class Blog
     }
 
     public function options(){
+        $recipeManager= new RecipeManager();
+        $recipes=$recipeManager->showourRecipesOnHold();
         require ('./view/options.php');
-    }
-
-    public function Enregistrer($edito){
-        $EditoManager=new EditoManager();
-        $EditoManager->save($edito);
-        header('location: index.php'); 
     }
 
     public function detail($recette){
