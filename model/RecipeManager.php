@@ -119,7 +119,7 @@ class RecipeManager extends Manager {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_date_creation, rec_auteur, REC_STATUS) 
-                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, CURDATE(), :rec_auteur,1)");
+                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, CURDATE(), :rec_auteur,1, 0)");
 
             $stmt->bindParam(':rec_id', $rec_id, PDO::PARAM_INT);
             $stmt->bindParam(':cat_id', $categoryRecipeID, PDO::PARAM_INT);
@@ -144,8 +144,8 @@ class RecipeManager extends Manager {
             $pdo = $this->dbConnect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_image ,rec_date_creation, rec_auteur, REC_STATUS) 
-                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, :rec_image ,CURDATE(), :rec_auteur,1)");
+            $stmt = $pdo->prepare("INSERT INTO RECETTE (rec_id, cat_id, rec_titre, rec_contenu, rec_resume, rec_image ,rec_date_creation, rec_auteur, REC_STATUT, REC_REFU) 
+                                   VALUES (:rec_id, :cat_id, :rec_titre, :rec_contenu, :rec_resume, :rec_image ,CURDATE(), :rec_auteur, 1, 0)");
 
             $stmt->bindParam(':rec_id', $rec_id, PDO::PARAM_INT);
             $stmt->bindParam(':cat_id', $categoryRecipeID, PDO::PARAM_INT);
@@ -169,8 +169,12 @@ class RecipeManager extends Manager {
     public function deleteRecipe($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM RECETTE WHERE REC_ID = ?');
-        $deletedRecipe = $req->execute(array($id));
+        $req1 = $db->prepare('DELETE FROM CONTENIR WHERE REC_ID =:rec_ID');
+        $req1->bindParam(':rec_ID', $id, PDO::PARAM_INT);
+        $req1->execute();
+        $req = $db->prepare('DELETE FROM RECETTE WHERE REC_ID = :rec_ID');
+        $req->bindParam(':rec_ID', $id, PDO::PARAM_INT);
+        $deletedRecipe = $req->execute();
 
         return $deletedRecipe;
     }
@@ -223,4 +227,24 @@ class RecipeManager extends Manager {
     $recipesStatement = $pdo->prepare($sqlQuery);
     $recipesStatement->execute();
    }
+
+   public function updateRecipeAdmin($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id){
+        
+    try {
+    $pdo = $this->dbConnect();
+    $sqlQuery = 'UPDATE RECETTE SET REC_TITRE=:nameRecipe, REC_CONTENU=:contentRecipe, REC_RESUME=:summaryRecipe, REC_DATE_MODIFICATION=CURDATE(),REC_STATUT=0 WHERE REC_ID=:idRecette';
+    $stmt = $pdo->prepare($sqlQuery);
+    $stmt->bindParam(':nameRecipe', $nameRecipe, PDO::PARAM_STR);
+    $stmt->bindParam(':contentRecipe', $contentRecipe, PDO::PARAM_STR);
+    $stmt->bindParam(':summaryRecipe', $summaryRecipe, PDO::PARAM_STR);
+    $stmt->bindParam(':idRecette', $rec_id, PDO::PARAM_INT);
+    $stmt->execute();
+    } catch (PDOException $e) {
+        echo $nameRecipe;
+        echo $contentRecipe;
+        echo $summaryRecipe;
+        echo $rec_id;
+        throw new Exception("Erreur d'insertion : " . $e->getMessage());
+    } 
+}
 }

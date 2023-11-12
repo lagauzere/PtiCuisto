@@ -25,7 +25,6 @@ require 'controller/Admin.php';
                 $blog->listPosts();
             }
 
-
             elseif ($_GET['action'] == 'deconnexion') {
                 $member = new Member();
                 $member->deconnexion();
@@ -35,6 +34,7 @@ require 'controller/Admin.php';
                 $blog = new Blog();
                 $blog->filtre();
             }
+
             elseif ($_GET['action'] == 'afficheFiltre') {
                 $blog = new Blog();
                 $blog->afficheRecettes($_POST['filtre']);
@@ -44,16 +44,18 @@ require 'controller/Admin.php';
                 $blog = new Blog();
                 $blog->listsUsersRecipes();
              }
- 
-              elseif ($_GET['action'] == 'ajouterRecette') {
+
+            elseif ($_GET['action'] == 'ajouterRecette') {
                  $blog = new Blog();
                  $blog->addRecipes();
               }
-              elseif ($_GET['action'] == 'registration') {
+
+            elseif ($_GET['action'] == 'registration') {
                 $member = new Member();
                 $member->registration();
             }
-             elseif ($_GET['action'] == 'nosRecettes') {
+
+            elseif ($_GET['action'] == 'nosRecettes') {
                 $blog = new blog();
                 $blog->nosRecettes();
             }
@@ -69,13 +71,13 @@ require 'controller/Admin.php';
                     throw new Exception('Vous devez écrire un edito');
                 }
             }
+
             elseif ($_GET['action'] == 'detailRecette') {
                 $blog = new blog();
                 $blog->detail($_GET['recette']);
             }           
 
-             elseif ($_GET['action'] == 'saveRecipe') {
-
+            elseif ($_GET['action'] == 'saveRecipe') {
                 if (isset($_POST['nameRecipe']) && isset($_POST['contentRecipe']) && isset($_POST['summaryRecipe']) && isset($_POST['CategoryRecipe'])) {
                     $blog = new Blog();
                     $blog->saveRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['CategoryRecipe'], $_POST['imageRecipe']);
@@ -83,43 +85,55 @@ require 'controller/Admin.php';
                     throw new Exception('Tous les champs ne sont pas remplis');
                 }
              }
-             elseif ($_GET['action'] == 'supprimerRecette') {
-                $blog = new Blog();
-                $blog->supprimerRecette($_GET['rec_id']);
-             }
 
-             elseif ($_GET['action'] == 'modifierRecette') {
+            elseif ($_GET['action'] == 'supprimerRecette') {
+                $blog = new Blog();
+                // echo $_GET['rec_id'];
+                $blog->supprimerRecette($_GET['rec_id']);
+            }
+
+            elseif ($_GET['action'] == 'modifierRecette') {
                 $blog = new Blog();
                 $blog->modifierRecette($_GET['rec_id']);
-             }
+            }
 
-             elseif ($_GET['action'] == 'updateRecette') {
+            elseif ($_GET['action'] == 'updateRecette') {
                 if (isset($_POST['nameRecipe']) && isset($_POST['contentRecipe']) && isset($_POST['summaryRecipe'])) {
                     $blog = new Blog();
                     $blog->updateRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['recetteID']);
                 } else {
                     throw new Exception('Tous les champs ne sont pas remplis');
                 }
-             }
-             elseif ($_GET['action'] == 'accepter') {
+            }
+
+            elseif ($_GET['action'] == 'accepter') {
                 $Admin= new Admin();
                 $Admin->accepter($_GET['id']);
 
-             }
-             elseif ($_GET['action'] == 'refuser') {
+            }
+             
+            elseif ($_GET['action'] == 'refuser') {
                 $Admin= new Admin();
                 $Admin->refuser($_GET['id']);
-             }
+            }
 
+            elseif ($_GET['action'] == 'modifierRecetteAdmin') {
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
+                    $blog = new Blog();
+                    $blog->modifierRecette($_GET['rec_id']);
+                } else {
+                    $blog = new Blog();
+                    $blog->listPosts();
+                }
+            }
             
-
         }
 
         else{
             $blog = new Blog();
             $blog->listPosts();
-            
         }
+
     } catch(Exception $e){
         Echo 'Erreur : ' . $e->getMessage();
     }

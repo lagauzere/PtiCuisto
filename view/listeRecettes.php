@@ -10,15 +10,15 @@
         ?>
         <div class="recette">
             <p>
-                <?php if($recipe['REC_STATUT']==0){
-                echo '
-                <a href="index.php?action=detailRecette&recette='. $recipe['REC_TITRE'] .'">
-                <img  src="'. $recipe['REC_IMAGE'] .'"/></a>'. "\n" .
-                    '<a href="index.php?action=detailRecette&recette='. $recipe['REC_TITRE'] .'">
-                    <div class="titre">' . $recipe['REC_TITRE'] . '</div></a>' . "<br>" .
-                    '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "<br>";
+                <?php if($recipe['REC_STATUT']==0){?>
+                
+                <a href="index.php?action=detailRecette&recette=<?=$recipe['REC_TITRE'];?>">
+                <img  src="<?=$recipe['REC_IMAGE']; ?>"/></a>
+                <a href="index.php?action=detailRecette&recette=<?=$recipe['REC_TITRE'];?>">
+                    <div class="titre"><?=$recipe['REC_TITRE'];?></div></a><br>
+                    '<div class="resume"><?=$recipe['REC_RESUME'];?></div><br>
+                <?php
                 }
-                // $recipe['REC_TAG']
                 ?>
             </p>
         </div>

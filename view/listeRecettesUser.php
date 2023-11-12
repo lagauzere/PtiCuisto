@@ -5,11 +5,10 @@
     <?php 
         foreach($userRecipe as $recipe){?>
             <div class="recette">
-                <?= '<img class="imgR" src="'. $recipe['REC_IMAGE'] .'"/>'. "\n" .
-                        '<a href="index.php?action=voirRecette"><div class="titre">' . $recipe['REC_TITRE'] . '</div> </a>' . "\n" .
-                        '<div class="resume">' . $recipe['REC_RESUME'] . '</div>' . "\n";
-                ?>
-
+                <img class="imgR" src="<?= $recipe['REC_IMAGE'];?>"/>
+                <a href="index.php?action=detailRecette&amp;recette=<?=$recipe['REC_TITRE'];?>"><div class="titre"><?= $recipe['REC_TITRE']; ?></div></a>
+                <div class="resume"><?=$recipe['REC_RESUME'];?></div>
+                
                 <?php
                  if ($recipe['REC_STATUT']==1){
                     echo'<p>Recette en cours de validation par un administrateur. <p>';

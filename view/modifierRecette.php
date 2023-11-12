@@ -38,7 +38,7 @@
                     <textarea class="form-control border border-info" id="summaryRecipe" name="summaryRecipe"><?= $recipe['REC_RESUME'] ?></textarea>
                     </div>
                 </div>
-                <input type="hidden" id="recetteID" name="recetteID" value="<?= $recipe['REC_ID']; ?>" />
+                <input type="hidden" id="recetteID" name="recetteID" readonly="readonly" value="<?= $recipe['REC_ID']; ?>" />
                 
                 <button type="submit" class="text-black btn-info btn-sm shadow">Confirmer la modification</button>
                 </form>
