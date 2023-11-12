@@ -7,6 +7,7 @@
     <title>Pticuisto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesListeRecettes.css">
 </head>
 
 <body>

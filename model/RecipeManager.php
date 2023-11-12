@@ -62,12 +62,13 @@ class RecipeManager extends Manager {
                 $sqlQuery = 'SELECT * FROM RECETTE Where REC_TITRE like "%'.$_POST['nom'].'%"';
                 }
     
+    
             else if ($filtre== 'ingredient'){
-                $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,CAT_INTITULE,REC_RESUME 
-                FROM RECETTE,INGREDIENT,CATEGORIE WHERE lower(ING_INTITULE) 
-                like "%'.$_POST['nomIngredient'].'%" and lower(REC_CONTENU) like "%'.$_POST['nomIngredient'].'%" and RECETTE.CAT_ID= CATEGORIE.CAT_ID;';
-                //"%'.$_POST['ingredient'].'%" or REC_TITRE like "%'.$_POST['ingredient'].'%"';
-                }
+                $sqlQuery = 'SELECT DISTINCT(REC_ID),REC_TITRE,REC_IMAGE,REC_RESUME 
+                FROM ÊTRE_PRÉSENT
+                JOIN INGREDIENT USING (ING_ID) JOIN RECETTE USING (REC_ID)
+                WHERE lower(ING_INTITULE) like "%'.$_POST['nomIngredient'].'%" OR lower(REC_RESUME) like "%'.$_POST['nomIngredient'].'%"';
+            }
        
         $recipesStatement = $pdo->prepare($sqlQuery);
         $recipesStatement->execute();
