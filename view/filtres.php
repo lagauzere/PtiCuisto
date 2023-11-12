@@ -12,6 +12,9 @@
         <input class="text-blue-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" type="submit" name=Ingredient value=Ingredient id=ingBtn>
         <br>
         <br>
+        <input class="text-blue-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" type="submit" name=Tag value=Tag id=ingBtn>
+        <br>
+        <br>
 
 
     </form>
@@ -52,7 +55,8 @@
         //si bouton Ingrédient cliqué possibilité pour l'utilisateur de renseigner l'ingrédient qu'il souhaite pour sa recette
     elseif (isset($_POST['Ingredient'])): {
             ingredient();
-        } ?>
+        }
+        ?>
 
         <div id="ChoixForm">
             <form action="index.php?action=afficheFiltre" method="post">
@@ -61,6 +65,17 @@
                 <input class="text-blue-500 text-center" type="submit" name=filtre value="ingredient" id="filtre">
             </form>
         </div>
+        <?php
+    elseif (isset($_POST['Tag'])): {
+        tag();
+    } ?>
+    <div id="ChoixForm">
+        <form action="index.php?action=afficheFiltre" method="post">
+            <input type="text" name="tag" id="tag">
+            <br>
+            <input class="text-blue-500 text-center" type="submit" name="filtre" value="tag" id="tag"> 
+        </form>
+    </div>
 
         <?php
         //fin de boucle
@@ -79,6 +94,10 @@
     function ingredient()
     {
         echo '<div class=text-blue-500 text-center>' . "Donner un ingrédient :" . '</div>';
+    }
+    function tag()
+    {
+        echo '<div class=text-blue-500 text-center>' . "Donner un tag :" . '</div>';
     }
     ?>
 
