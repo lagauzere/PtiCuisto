@@ -82,6 +82,7 @@ class Blog
         $recipes=$recipeManager->showDetails($recette);
         require("./view/detailRecette.php");
     }
+
     public function supprimerRecette($id){
         if(!isset($_SESSION['id'])) { // Sécurité si ce n'est pas un membre redirection vers la page de connexion
             header('Location: index.php?action=connexion');
@@ -94,5 +95,32 @@ class Blog
             header('location: index.php?action=mesRecettes'); 
         }
     }
-        
+     
+    public function modifierRecette($rec_id) {
+        // Vérifiez si l'utilisateur est connecté
+        if (!isset($_SESSION['id'])) {
+            header('Location: index.php?action=connexion');
+            die();
+        }
+    
+        // Récupérez la recette à modifier depuis la base de données
+        $recipeManager = new RecipeManager();
+        $recipe = $recipeManager->getRecipeById($rec_id);
+    
+        // Vérifiez si l'utilisateur connecté est l'auteur de la recette
+        if ($_SESSION['id'] == $recipe['REC_AUTEUR']) {
+            // Affichez le formulaire de modification pré-rempli avec les détails de la recette
+            require('view/modifierRecette.php');
+        } else {
+            // Redirigez l'utilisateur s'il n'est pas autorisé à modifier cette recette
+            header('Location: index.php?action=mesRecettes');
+        }
+    }
+
+    public function updateRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id) {
+       $recipeManager = new RecipeManager();
+       $recipeManager->updateRecipe($nameRecipe, $contentRecipe, $summaryRecipe, $rec_id);
+       header('Location: index.php?action=mesRecettes');
+    }
+
 }

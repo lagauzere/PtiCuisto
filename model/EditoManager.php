@@ -15,8 +15,9 @@ class EditoMAnager extends Manager {
     }   
     public function save($edito){
         $pdo = $this->dbConnect();
-        $sqlQuery = 'UPDATE Edito set content="'.$edito.'" WHERE id=1';
+        $sqlQuery = 'UPDATE Edito SET content=:edito WHERE id=1';
         $EditoStatement = $pdo->prepare($sqlQuery);
+        $EditoStatement->bindParam(':edito', $edito, PDO::PARAM_STR);
         $EditoStatement->execute();
     }
 }

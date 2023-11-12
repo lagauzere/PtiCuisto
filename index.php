@@ -86,6 +86,20 @@ require 'controller/Member.php';
                 $blog = new Blog();
                 $blog->supprimerRecette($_GET['rec_id']);
              }
+
+             elseif ($_GET['action'] == 'modifierRecette') {
+                $blog = new Blog();
+                $blog->modifierRecette($_GET['rec_id']);
+             }
+
+             elseif ($_GET['action'] == 'updateRecette') {
+                if (isset($_POST['nameRecipe']) && isset($_POST['contentRecipe']) && isset($_POST['summaryRecipe'])) {
+                    $blog = new Blog();
+                    $blog->updateRecipe($_POST['nameRecipe'], $_POST['contentRecipe'], $_POST['summaryRecipe'], $_POST['recetteID']);
+                } else {
+                    throw new Exception('Tous les champs ne sont pas remplis');
+                }
+             }
         }
 
         else{
