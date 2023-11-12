@@ -1,14 +1,17 @@
 <?php
     require './model/RecipeManager.php'; 
     $categoryRecipeID;
+    require './model/EditoManager.php'; 
 class Blog 
 {
     // Méthode pour afficher les chapitres / page d'accueil
     public function listPosts()
     {
+        $EditoManager=new EditoManager();
         $recipeManager = new RecipeManager(); 
         $posts = $recipeManager->getPosts(); 
         $posts2 = $recipeManager->getPosts(); 
+        $posts3 = $EditoManager->getEdito();
         require('./view/homeview.php');
     }
 
@@ -44,6 +47,41 @@ class Blog
         }
     }
 
+
+
+
+    public function filtre(){
+        require ('./view/filtres.php');
+    }
+
+    public function afficheRecettes($filtre){
+        $recipeManager = new RecipeManager(); 
+        $recipes= $recipeManager->showRecipe($filtre);
+        require("./view/listeRecettes.php");
+    }
+
+
+    public function nosRecettes(){
+        $recipeManager= new RecipeManager();
+        $recipes=$recipeManager->showourrecipes();
+        require("./view/nosRecettes.php");
+    }
+
+    public function options(){
+        require ('./view/options.php');
+    }
+
+    public function Enregistrer($edito){
+        $EditoManager=new EditoManager();
+        $EditoManager->save($edito);
+        header('location: index.php'); 
+    }
+
+    public function detail($recette){
+        $recipeManager= new RecipeManager();
+        $recipes=$recipeManager->showDetails($recette);
+        require("./view/detailRecette.php");
+    }
     public function supprimerRecette($id){
         if(!isset($_SESSION['id'])) { // Sécurité si ce n'est pas un membre redirection vers la page de connexion
             header('Location: index.php?action=connexion');
@@ -56,6 +94,5 @@ class Blog
             header('location: index.php?action=mesRecettes'); 
         }
     }
-    
-
+        
 }

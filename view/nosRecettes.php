@@ -1,10 +1,6 @@
-
 <?php ob_start(); ?>
    
-    <p class="header">Voici les recettes correspondant à vos critères :</p>
     <?php
-
-
     // On affiche chaque recette une à une
     foreach ($recipes as $recipe) {
         ?>

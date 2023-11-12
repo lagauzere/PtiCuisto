@@ -7,6 +7,7 @@
     <title>Pticuisto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesListeRecettes.css">
 </head>
 
 <body>
@@ -14,17 +15,19 @@
     <?php
         include 'navbar.php';
     ?>
-    <!-- Fin Navbar -->
+
+
 
     <!-- Contenu -->
         <?= $content?>
     <!-- Fin Contenu -->
 
+
+
     <!-- Footer -->
     <?php
-        // include 'footer.php';
+         include 'footer.php';
     ?>
-    <!-- Fin Footer -->
 </body>
 
 </html>

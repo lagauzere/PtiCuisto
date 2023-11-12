@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php ob_start(); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filtres</title>
-</head>
 
-<body>
+    <form class="text-center" method="post">
 
-    <?php require("navbar.php"); ?>
-
-    <form method="post">
-
-        <input type="submit" name=Categorie value=Categorie id=catBtn>
+        <input class="text-blue-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"type="submit" name=Categorie value=Categorie id=catBtn>
         <br>
         <br>
-        <input type="submit" name=Titre value=Titre id=titreBtn>
+        <input class="text-blue-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" type="submit" name=Titre value=Titre id=titreBtn>
         <br>
         <br>
-        <input type="submit" name=Ingredient value=Ingredient id=ingBtn>
+        <input class="text-blue-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" type="submit" name=Ingredient value=Ingredient id=ingBtn>
         <br>
         <br>
 
@@ -34,15 +24,15 @@
             cat();
         } ?>
         <div id="ChoixForm">
-            <form action="listeRecettes.php" method="post">
-                <input type="radio" name=entree value=entree id=entree>
-                <label for="entree">Entree</label>
-                <input type="radio" name=plat value=plat id=plat>
-                <label for="plat">Plat</label>
-                <input type="radio" name=dessert value=dessert id=dessert>
-                <label for="dessert">Dessert</label>
+            <form class="text-center" action="index.php?action=afficheFiltre" method="post">
+                <input type="radio" name="filtre" value="entree" id="entree">
+                <label class="text-blue-500" for="entree" >Entree</label>
+                <input type="radio" name="filtre" value="plat" id="plat">
+                <label class="text-blue-500" for="plat">Plat</label>
+                <input type="radio" name="filtre" value="dessert" id="dessert">
+                <label class="text-blue-500" for="dessert">Dessert</label>
                 <br>
-                <input type="submit" name=Filtrer value=filtre id=filtre>
+                <input class="text-blue-500" type="submit" name="Filtrer" value="filtre" id="filtre">
             </form>
         </div>
 
@@ -52,10 +42,10 @@
             titre();
         } ?>
         <div id="ChoixForm">
-            <form action="listeRecettes.php" method="post">
-                <input type="text" id=titre name=titre>
+            <form action="index.php?action=afficheFiltre" method="post">
+                <input type="text" name="nom" id="titre">
                 <br>
-                <input type="submit" name=Filtrer value=filtre id=filtre>
+                <input class="text-blue-500 text-center" type="submit" name="filtre" value="titre" id="titre"> 
             </form>
         </div>
         <?php
@@ -65,10 +55,10 @@
         } ?>
 
         <div id="ChoixForm">
-            <form action="listeRecettes.php" method="post">
-                <input type="text" id=Ingredient name=ingredient>
+            <form action="index.php?action=afficheFiltre" method="post">
+                <input type="text" id="ingredient" name="nomIngredient">
                 <br>
-                <input type="submit" name=Filtrer value=filtre id=filtre>
+                <input class="text-blue-500 text-center" type="submit" name=filtre value="ingredient" id="filtre">
             </form>
         </div>
 
@@ -80,18 +70,18 @@
     <?php
     function cat()
     {
-        echo "Choisir une catégorie :";
+        echo '<div class=text-blue-500 text-center>' . "Choisir une catégorie :" . '</div>';
     }
     function titre()
     {
-        echo "Donner un mot :";
+        echo '<div class=text-blue-500 text-center>' . "Donner un mot :" . '</div>';
     }
     function ingredient()
     {
-        echo "Donner un ingrédient :";
+        echo '<div class=text-blue-500 text-center>' . "Donner un ingrédient :" . '</div>';
     }
     ?>
 
-</body>
-
-</html>
+<?php $content = ob_get_clean();
+    include 'template.php';
+?>
