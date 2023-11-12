@@ -1,0 +1,95 @@
+.navBackground {
+  background-color: #7890cd;
+  display: block;
+}
+
+#hrefcolor {
+  color: #ffffff;
+}
+
+#logoPosition {
+  text-align: left;
+}
+
+.CarouselMargin {
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+#logoEditoPosition {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.edito {
+  float: right;
+  background-color: #2a3990;
+  color: #ffffff;
+  width: 40%;
+  margin-right: 5%;
+}
+
+.edito h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.edito p {
+  text-align: center;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.derRecette {
+  width: 40%;
+  float: left;
+  border: solid #7890cd 4px;
+  margin-left: 5%;
+}
+
+.editoMobile {
+  background-color: #2a3990;
+  color: #ffffff;
+  text-align: center;
+}
+
+#h2Edito {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.classicFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #2a3990;
+}
+
+.classic-social-icons {
+  margin-top: 0.5%;
+  max-width: 225px;
+  max-height: 225px;
+  margin-bottom: 0.5%;
+}
+
+.footerMobile{
+  background-color: #2a3990;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mobile-social-icons {
+  max-width: 35%;
+}
+
+
+.form-group{
+  border: solid black 4px;
+}
