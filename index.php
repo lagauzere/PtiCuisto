@@ -57,11 +57,11 @@ require 'controller/Admin.php';
                 $blog = new blog();
                 $blog->nosRecettes();
             }
-            elseif ($_GET['action'] == 'optionsAdmin') {
+            elseif ($_GET['action'] == 'optionsAdmin' && isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
                 $blog = new blog();
                 $blog->options();
             }
-            elseif ($_GET['action'] == 'saveEdito') {
+            elseif ($_GET['action'] == 'saveEdito' ) {
                 if (isset($_POST['contentEdito'])){    
                     $Admin = new Admin();
                     $Admin->Enregistrer($_POST['contentEdito']);
